@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ema-voice"
+version = "0.1.0"
+description = "Turkish text-to-speech with 2,736 voices and voice cloning from a 10-second recording"
+requires-python = ">=3.11"
+license = "Apache-2.0"
+dependencies = [
+  "torch==2.14.1",
+  "torchaudio==2.11.0",
+  "ema-lightning==1.0.1",
+  "dacvae @ git+https://github.com/facebookresearch/dacvae@414c20785fc3a28373073ea8ef7a1316eeeaca6e",
+  "numpy>=2",
+  "soundfile>=0.13",
+  "huggingface-hub>=1.0",
+  "transformers>=4.50",
+  "gradio>=5",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]
